@@ -26,6 +26,7 @@ pipeline {
 
 		stage('build') {
 			steps {
+				sh "echo ${BRANCH_NAME}"
 				sh "echo ${STAGE_NAME}"
 			}
 			post {
@@ -43,6 +44,7 @@ pipeline {
 
 		stage('test') {
 			steps {
+				sh "echo ${BRANCH_NAME}"
 				sh "echo ${STAGE_NAME}"
 			}
 			post {
@@ -60,6 +62,7 @@ pipeline {
 
 		stage('publish') {
 			steps {
+				sh "echo ${BRANCH_NAME}"
 				sh "echo ${STAGE_NAME}"
 			}
 			post {
