@@ -1,0 +1,11 @@
+version: '3'
+services:
+  say-hello:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: say-hello:latest
+    container_name: say-hello
+    restart: always
+    ports:
+      - "9080:9080"
