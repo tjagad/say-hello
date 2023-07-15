@@ -1,7 +1,7 @@
 FROM golang:1.20.6 as builder
 WORKDIR /say-hello/
 COPY . .
-RUN CGO_ENABLED=0 go build -o say-hello /say-hello/main.go
+RUN CGO_ENABLED=0 go build -o say-hello /say-hello/*.go
 
 FROM alpine:latest
 WORKDIR /say-hello
