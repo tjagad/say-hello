@@ -8,6 +8,7 @@ pipeline {
 	stages {
 		stage('checkout') {
 			steps {
+				sh "echo ${BRANCH_NAME}"
 				sh "echo ${STAGE_NAME}"
 			}
 			post {
