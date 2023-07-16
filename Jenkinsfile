@@ -3,11 +3,7 @@ pipeline {
 		TS = sh(script: 'date +%Y-%m-%d-%H-%M', returnStdout: true).trim()
 	}
 
-	agent {
-		dockerfile {
-			filename 'Dockerfile'
-		}
-	}
+	agent any
 
 	stages {
 		stage('checkout') {
