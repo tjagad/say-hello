@@ -8,8 +8,20 @@ pipeline {
 	stages {
 		stage('checkout') {
 			steps {
-				sh "echo ${BRANCH_NAME}"
-				sh "echo ${STAGE_NAME}"
+				script {
+					checkout changelog: true, poll: true, scm: [
+						$class: 'GitSCM',
+						branches: [[name: "origin/${env.BRANCH_NAME}"]],
+						doGenerateSubmoduleConfigurations: false,
+						extensions: [
+							[$class: 'GitLFSPull'],
+							[$class: 'CheckoutOption', timeout: 60],
+							[$class: 'CloneOption', depth: 0, timeout: 60],
+						],
+						submoduleCfg: [],
+						userRemoteConfigs: scm.userRemoteConfigs
+					]
+				}
 			}
 			post {
 				aborted {
